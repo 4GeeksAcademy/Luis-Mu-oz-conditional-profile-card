@@ -33,22 +33,44 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
-          </ul>
+          <h1>${variables.name == null ? "Lucy" : variables.name} ${
+    variables.lastName == null ? "Boilett" : variables.lastName
+  } </h1>
+          <h2>${variables.role == null ? "Web Developer" : variables.role}</h2>
+          <h3>${variables.city == null ? "Miami," : variables.city} ${
+    variables.country == null ? "USA" : variables.country
+  }</h3>
+ 
+          <ul class="${variables.socialMediaPosition}">
+             ${
+               variables.twitter
+                 ? `<li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>`
+                 : ""
+             }
+            ${
+              variables.github
+                ? `<li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>`
+                : ""
+            }
+                  ${
+                    variables.linkedin
+                      ? `<li><a href="https://linkedin.com/in/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>`
+                      : ""
+                  }
+
+            ${
+              variables.instagram
+                ? `<li><a href="https://instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>`
+                : ""
+            }
+    </ul>
         </div>
     `;
 }
 
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
- */
+ *  */
 window.onload = function() {
   window.variables = {
     // if includeCover is true the algorithm should show the cover image
@@ -89,3 +111,4 @@ window.onload = function() {
     });
   });
 };
+console.log(window.variable);
